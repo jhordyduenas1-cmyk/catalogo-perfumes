@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ulises Perfum · Perfumes para hombre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #140810;
+    --bg2: #1f0c16;
+    --card: #2a1420;
+    --line: rgba(212, 167, 86, .25);
+    --gold: #d4a756;
+    --gold2: #f3d58f;
+    --cream: #f7ecdc;
+    --muted: #c9b3a6;
+    --wa: #25D366;
+    --wa-d: #1ebe5a;
+    --radius: 18px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--cream);
+    min-height: 100vh;
+    background:
+      radial-gradient(1000px 500px at 85% -10%, #4a1630 0%, transparent 60%),
+      linear-gradient(180deg, var(--bg2), var(--bg));
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  .container { width: min(1200px, 100% - 32px); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(20, 8, 16, .78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 14px 0;
+  }
+  .brand {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.3rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--gold2); text-decoration: none;
+    white-space: nowrap;
+  }
+  .brand small {
+    display: block; font-family: Inter, sans-serif; font-size: .62rem;
+    letter-spacing: .3em; color: var(--gold); font-weight: 500;
+  }
+
+  .btn-wa {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--wa); color: #06230f;
+    font-weight: 600; font-size: .9rem;
+    padding: 10px 16px; border-radius: 999px;
+    text-decoration: none; white-space: nowrap;
+    transition: background .2s, transform .2s;
+  }
+  .btn-wa:hover { background: var(--wa-d); transform: translateY(-1px); }
+  .btn-wa svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+  /* ---------- Hero ---------- */
+  .hero { text-align: center; padding: 56px 0 24px; }
+  .hero h1 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+    font-weight: 700; letter-spacing: .03em;
+    color: var(--gold2);
+  }
+  .hero .tagline-main {
+    margin-top: 10px; color: var(--muted);
+    font-style: italic; font-size: 1.05rem;
+  }
+  .divider {
+    width: 110px; height: 1px; margin: 20px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .count { margin-top: 14px; font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); }
+
+  /* ---------- Grid ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+    gap: 22px;
+    padding: 28px 0 70px;
+  }
+
+  .card {
+    display: flex; flex-direction: column;
+    background: linear-gradient(180deg, rgba(42, 20, 32, .92), rgba(30, 13, 22, .97));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 167, 86, .6);
+    box-shadow: 0 20px 40px -18px rgba(0, 0, 0, .75);
+  }
+
+  .media {
+    position: relative; aspect-ratio: 1 / 1;
+    background: #0e0509; overflow: hidden;
+  }
+  .media img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform .5s;
+  }
+  .card:hover .media img { transform: scale(1.04); }
+
+  .placeholder {
+    width: 100%; height: 100%;
+    display: grid; place-items: center; text-align: center; padding: 20px;
+    background: radial-gradient(circle at 50% 40%, #3a1a2b, #120609);
+  }
+  .placeholder span {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.35rem; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--gold2);
+  }
+
+  .body {
+    display: flex; flex-direction: column; gap: 8px;
+    padding: 16px 18px 18px; flex: 1;
+  }
+  .name {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.25rem; font-weight: 700;
+    letter-spacing: .03em; text-transform: uppercase;
+    color: var(--gold2); line-height: 1.2;
+  }
+  .desc { font-size: .9rem; color: var(--muted); font-style: italic; }
+  .notes { font-size: .86rem; line-height: 1.45; opacity: .9; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+  .chip {
+    font-size: .72rem; padding: 4px 9px;
+    border: 1px solid var(--line); border-radius: 999px;
+    color: var(--gold2);
+  }
+
+  .meta {
+    margin-top: auto; padding-top: 12px;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .size { font-size: .85rem; color: var(--muted); }
+  .price { font-size: 1.3rem; font-weight: 700; color: var(--gold2); }
+
+  .btn-card { width: 100%; margin-top: 10px; }
+  .may { color: var(--gold2); font-size: .95rem; }
+  .size small { font-size: .72rem; letter-spacing: .05em; }
+
+  /* ---------- Floating WhatsApp ---------- */
+  .fab {
+    position: fixed; right: 18px; bottom: 18px; z-index: 60;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--wa); color: #fff;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, .4);
+    animation: pulse 2.4s infinite;
+  }
+  .fab svg { width: 32px; height: 32px; fill: currentColor; }
+  .fab:hover { background: var(--wa-d); }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, .5); }
+    70%  { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+
+  footer {
+    text-align: center; padding: 26px 0 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted); font-size: .85rem;
+  }
+  footer strong { color: var(--gold2); font-weight: 600; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 600px) {
+    .nav { padding: 12px 0; }
+    .brand { font-size: 1.05rem; }
+    .btn-wa.header-btn { padding: 9px 12px; font-size: .82rem; }
+    .grid { gap: 14px; padding-top: 18px; }
+    .body { padding: 12px 12px 14px; gap: 6px; }
+    .name { font-size: 1.02rem; }
+    .desc, .notes { font-size: .8rem; }
+    .chip { font-size: .64rem; padding: 3px 7px; }
+    .price { font-size: 1.08rem; }
+    .size { font-size: .78rem; }
+    .btn-card { font-size: .82rem; padding: 10px 8px; }
+    .btn-card svg { width: 16px; height: 16px; }
+    .fab { width: 54px; height: 54px; right: 14px; bottom: 14px; }
+    .fab svg { width: 28px; height: 28px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio">Ulises<small>PERFUM</small></a>
+    <a class="btn-wa header-btn" id="headerWa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.27 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+      Escríbenos
+    </a>
+  </div>
+</header>
+
+<main id="inicio" class="container">
+  <section class="hero">
+    <h1 id="brandTitle">Ulises Perfum</h1>
+    <p class="tagline-main">Colección para hombre · fragancias que dejan huella</p>
+    <div class="divider"></div>
+    <p class="count" id="count"></p>
+  </section>
+
+  <section class="grid" id="grid" aria-label="Perfumes para hombre"></section>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong id="footerBrand">Ulises Perfum</strong> · Pedidos por WhatsApp</p>
+    <p style="margin-top:6px">WhatsApp: <a id="footerPhone" target="_blank" rel="noopener"></a></p>
+  </div>
+</footer>
+
+<a class="fab" id="fab" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" title="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.27 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+</a>
+
+<script>
+  /* =========================================================
+     CONFIGURACIÓN — edita aquí tu marca, número y productos
+     ========================================================= */
+  const CONFIG = {
+    brand: "Ulises Perfum",
+    whatsapp: "51960555115",          // código de país + número, sin + ni espacios
+    headerMessage: "Hola, quisiera información sobre sus perfumes"
+  };
+
+  /*
+    Cada perfume:
+      name   : nombre del perfume
+      ml     : presentación
+      price  : precio (cámbialo por el tuyo)
+      desc   : frase corta / eslogan
+      notes  : (opcional) notas olfativas o descripción breve
+      img    : ruta de la foto (deja "" si aún no tienes foto → se muestra un espacio con el nombre)
+  */
+  const PRODUCTS = [
+    { name: "Victorieux Homme", ml: "100ml", price: "S/ 105", mayor: "S/ 99.90", desc: "Poder que se nota al llegar", img: "img/victorieux-homme.jpg" },
+    { name: "Fortune Man", ml: "100ml", price: "S/ 110", mayor: "S/ 99.90", desc: "El aroma del éxito", img: "img/fortune-man.jpg" },
+    { name: "Intensity Pour Homme", ml: "100ml", price: "S/ 104", mayor: "S/ 99.90", desc: "Intensidad que impone", img: "img/intensity-pour-homme.jpg" },
+    { name: "Intensity Collectors", ml: "100ml", price: "S/ 105", mayor: "S/ 99.90", desc: "Edición para coleccionistas", img: "img/intensity-collectors.jpg" },
+    { name: "Intense Man", ml: "100ml", price: "S/ 104", mayor: "S/ 99.90", desc: "Más que un perfume… presencia", img: "img/intense-man.jpg" },
+    { name: "Timeline For Men", ml: "100ml", price: "S/ 110", mayor: "S/ 99.90", desc: "Un estilo para cada momento", img: "img/timeline-for-men.jpg" },
+    { name: "Esraa", ml: "100ml", price: "S/ 130", mayor: "S/ 110", desc: "Elegancia árabe que deja huella", img: "img/esraa.jpg" },
+    { name: "Abraaj", ml: "100ml", price: "S/ 130", mayor: "S/ 110", desc: "Lujo oriental, carácter propio", img: "img/abraaj.jpg" },
+    { name: "Fakhar Lattafa", ml: "100ml", price: "S/ 145", mayor: "S/ 115", desc: "Orgullo y distinción", img: "img/fakhar-lattafa.jpg" },
+    { name: "Heaven By Amaran", ml: "100ml", price: "S/ 130", mayor: "S/ 110", desc: "Fresco, elegante, celestial", img: "img/heaven-by-amaran.jpg" },
+    { name: "Club de Nuit Urban", ml: "100ml", price: "S/ 134", mayor: "S/ 115", desc: "Noches con estilo urbano", img: "img/club-de-nuit-urban.jpg" },
+    { name: "Club de Nuit Untold", ml: "100ml", price: "S/ 150", mayor: "S/ 125", desc: "Lo que no se cuenta, se huele", img: "img/club-de-nuit-untold.jpg" },
+    { name: "Royale Opal", ml: "100ml", price: "S/ 125", mayor: "S/ 120", desc: "Realeza en cada nota", img: "img/royale-opal.jpg" },
+    { name: "Lever du Soleil", ml: "100ml", price: "S/ 130", mayor: "S/ 120", desc: "Amanecer en tu piel", img: "img/lever-du-soleil.jpg" },
+    { name: "Umm Al Quwain", ml: "100ml", price: "S/ 125", mayor: "S/ 120", desc: "Tradición del Golfo", img: "img/umm-al-quwain.jpg" },
+    { name: "Al Awwal", ml: "100ml", price: "S/ 135", mayor: "S/ 125", desc: "El primero, el inolvidable", img: "img/al-awwal.jpg" },
+    { name: "9 PM", ml: "100ml", price: "S/ 160", mayor: "S/ 140", desc: "Hecho para la noche", img: "img/9-pm.jpg" },
+    { name: "Hawas Fire", ml: "100ml", price: "S/ 180", mayor: "S/ 180", desc: "Fuego, fuerza y pasión", img: "img/hawas-fire.jpg" }
+  ];
+
+  /* ========================================================= */
+
+  const FEATURES = ["Larga duración", "Para hombre"];
+
+  function waLink(text) {
+    return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+  }
+
+  function makePlaceholder(name) {
+    const box = document.createElement("div");
+    box.className = "placeholder";
+    const label = document.createElement("span");
+    label.textContent = name;
+    box.append(label);
+    return box;
+  }
+
+  function makeCard(p) {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    // Imagen (o espacio limpio con el nombre si no hay foto)
+    const media = document.createElement("div");
+    media.className = "media";
+    if (p.img) {
+      const img = new Image();
+      img.alt = `Perfume ${p.name}`;
+      img.loading = "lazy";
+      img.onerror = () => media.replaceChildren(makePlaceholder(p.name));
+      img.src = p.img;
+      media.append(img);
+    } else {
+      media.append(makePlaceholder(p.name));
+    }
+
+    const body = document.createElement("div");
+    body.className = "body";
+
+    const name = document.createElement("h2");
+    name.className = "name";
+    name.textContent = p.name;
+
+    const desc = document.createElement("p");
+    desc.className = "desc";
+    desc.textContent = p.desc;
+
+    body.append(name, desc);
+
+    if (p.notes) {
+      const notes = document.createElement("p");
+      notes.className = "notes";
+      notes.textContent = p.notes;
+      body.append(notes);
+    }
+
+    const chips = document.createElement("div");
+    chips.className = "chips";
+    FEATURES.forEach(f => {
+      const c = document.createElement("span");
+      c.className = "chip";
+      c.textContent = f;
+      chips.append(c);
+    });
+    body.append(chips);
+
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    const size = document.createElement("span");
+    size.className = "size";
+    size.innerHTML = `${p.ml}<br><small>Por mayor</small> <b class="may">${p.mayor}</b>`;
+    const price = document.createElement("span");
+    price.className = "price";
+    price.textContent = p.price;
+    meta.append(size, price);
+    body.append(meta);
+
+    const btn = document.createElement("a");
+    btn.className = "btn-wa btn-card";
+    btn.target = "_blank";
+    btn.rel = "noopener";
+    btn.href = waLink(`Hola, me interesa el perfume ${p.name} de ${p.ml} a ${p.price} (precio por mayor ${p.mayor})`);
+    btn.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>Pedir por WhatsApp`;
+    body.append(btn);
+
+    card.append(media, body);
+    return card;
+  }
+
+  function render() {
+    const grid = document.getElementById("grid");
+    grid.replaceChildren(...PRODUCTS.map(makeCard));
+
+    document.getElementById("count").textContent = `${PRODUCTS.length} fragancias para hombre`;
+    document.getElementById("brandTitle").textContent = CONFIG.brand;
+    document.getElementById("footerBrand").textContent = CONFIG.brand;
+    document.title = `${CONFIG.brand} · Perfumes para hombre`;
+
+    const generalLink = waLink(CONFIG.headerMessage);
+    document.getElementById("headerWa").href = generalLink;
+    document.getElementById("fab").href = generalLink;
+    document.getElementById("footerPhone").textContent = "+" + CONFIG.whatsapp;
+    document.getElementById("footerPhone").href = `https://wa.me/${CONFIG.whatsapp}`;
+  }
+
+  render();
+</script>
+</body>
+</html>

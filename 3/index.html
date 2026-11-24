@@ -239,7 +239,7 @@
 <footer>
   <div class="container">
     <p><strong id="footerBrand">Ulises Perfum</strong> · Pedidos por WhatsApp</p>
-    <p style="margin-top:6px">WhatsApp: <a id="footerPhone" target="_blank" rel="noopener"></a> · <a id="footerPhone2" target="_blank" rel="noopener"></a></p>
+    <p style="margin-top:6px">WhatsApp: <a id="footerPhone" target="_blank" rel="noopener"></a></p>
   </div>
 </footer>
 
@@ -254,7 +254,6 @@
   const CONFIG = {
     brand: "Ulises Perfum",
     whatsapp: "51919180027",          // código de país + número, sin + ni espacios
-    whatsapp2: "51960555115",         // segundo número de contacto
     headerMessage: "Hola, quisiera información sobre sus perfumes"
   };
 
@@ -390,8 +389,6 @@
     document.getElementById("fab").href = generalLink;
     document.getElementById("footerPhone").textContent = "+" + CONFIG.whatsapp;
     document.getElementById("footerPhone").href = `https://wa.me/${CONFIG.whatsapp}`;
-    document.getElementById("footerPhone2").textContent = "+" + CONFIG.whatsapp2;
-    document.getElementById("footerPhone2").href = `https://wa.me/${CONFIG.whatsapp2}`;
   }
 
   render();
