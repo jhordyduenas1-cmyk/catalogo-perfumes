@@ -114,7 +114,7 @@
   }
 
   .media {
-    position: relative; aspect-ratio: 1 / 1;
+    position: relative; aspect-ratio: 800 / 854;
     background: #0e0509; overflow: hidden;
   }
   .media img {
@@ -314,7 +314,7 @@
     if (p.img) {
       const img = new Image();
       img.alt = `Perfume ${p.name}`;
-      img.width = 720; img.height = 720; img.decoding = "async";
+      img.width = 800; img.height = 854; img.decoding = "async";
       if (idx > 3) img.loading = "lazy";
       img.onerror = () => media.replaceChildren(makePlaceholder(p.name));
       img.src = p.img;
